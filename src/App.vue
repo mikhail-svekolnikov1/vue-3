@@ -12,7 +12,7 @@ import Component1 from './Component1.vue'
       </template>
 
       <template v-slot:buttonHeaderSlot="slotProps">
-        <h1>Click {{slotProps.text}}</h1>
+        <h1>Headeer is  {{slotProps.text}}</h1>
       </template>
     </Component1>
 

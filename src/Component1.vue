@@ -6,10 +6,17 @@ import Component2 from "./Component2.vue";
 <div>
   <div>Component child =></div>
 
-  <slot name="buttonHeaderSlot" :text="'Headeeer'"></slot>
-  <slot name="buttonSlot" :text="'text'"></slot>
 
 
-<!--  <Component2 />-->
+
+  <Component2>
+    <template v-slot:buttonSlot="slotProps">
+      <slot name="buttonSlot" :text="slotProps.text" />
+    </template>
+
+    <template v-slot:buttonHeaderSlot="slotProps">
+      <slot name="buttonHeaderSlot" :text="slotProps.text" />
+    </template>
+  </Component2>
 </div>
 </template>

@@ -2,5 +2,9 @@
 </script>
 
 <template>
-<div>Component super child</div>
+<div>
+  <div>Component super child</div>
+  <slot name="buttonHeaderSlot" :text="'Headeeer'"></slot>
+  <slot name="buttonSlot" :text="'text'"></slot>
+</div>
 </template>
