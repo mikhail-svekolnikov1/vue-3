@@ -8,6 +8,7 @@ import ImagesRender from "./components/ImagesRender.vue";
 <div>
 
   <ImagesRender />
+
 <!--    <Component1 >-->
 <!--      <template v-slot:buttonSlot="slotProps">-->
 <!--        <Button @click="console.log(slotProps.text)">Click {{slotProps.text}}</Button>-->
