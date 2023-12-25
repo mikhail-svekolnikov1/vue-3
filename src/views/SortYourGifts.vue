@@ -13,36 +13,37 @@
       Move to bottom
     </button>
   </div>
-  <div class="flex justify-between flex-wrap">
-    <div
-      class="w-[20%] bg-black px-5 py-12 m-5"
-      v-for="(gift, index) in gifts"
-      :key="gift.name"
-      @click="onSelectCard(gift, index)"
-      :class="{
-        isSelected: selectedCards.find(
-          (selectedGift) => selectedGift.name === gift.name
-        ),
-      }"
+  <div>
+    <draggable
+      v-model="gifts"
+      item-key="id"
+      class="flex justify-between flex-wrap"
     >
-      {{ gift.name }}
-      <div>index: {{ index }}</div>
-    </div>
+      <template #item="{ element, index }">
+        <div class="w-[20%] bg-black px-5 py-12 m-5">
+          <div @click="onSelectCard(element, index)">{{ element.name }}</div>
+          <div>
+            <strong>id: {{ element.id }}</strong>
+          </div>
+        </div>
+      </template>
+    </draggable>
   </div>
 </template>
 
 <script setup>
+import draggable from "vuedraggable";
 import { ref } from "vue";
 
 const gifts = ref([
-  { name: "misha" },
-  { name: "ivan" },
-  { name: "stas" },
-  { name: "john" },
-  { name: "misha2" },
-  { name: "ivan2" },
-  { name: "stas2" },
-  { name: "john2s" },
+  { name: "misha", id: 1 },
+  { name: "ivan", id: 2 },
+  { name: "stas", id: 3 },
+  { name: "john", id: 4 },
+  { name: "misha2", id: 5 },
+  { name: "ivan2", id: 6 },
+  { name: "stas2", id: 7 },
+  { name: "john2s", id: 8 },
 ]);
 
 const selectedCards = ref([]);
