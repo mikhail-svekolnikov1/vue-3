@@ -17,7 +17,7 @@
     <draggable
       v-model="gifts"
       item-key="id"
-      class="flex justify-between flex-wrap"
+      class="flex justify-between flex-wrap flex-row-reverse"
     >
       <template #item="{ element, index }">
         <div class="w-[20%] bg-black px-5 py-12 m-5">
