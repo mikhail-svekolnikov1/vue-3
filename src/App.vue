@@ -6,23 +6,4 @@
     <router-link to="/about">Go to About </router-link>
     <router-view></router-view>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </template>
-
-
