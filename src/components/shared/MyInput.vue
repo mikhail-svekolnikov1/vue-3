@@ -1,9 +1,10 @@
 <template>
   <div>
+    <div>My input</div>
     <input
       type="text"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', $event.target?.value)"
     />
   </div>
 </template>
@@ -14,6 +15,7 @@ interface Props {
 }
 
 defineProps<Props>();
+defineEmits<{ (e: "update:modelValue", value: string): void }>();
 </script>
 
 <style scoped></style>
