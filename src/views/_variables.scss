@@ -1,0 +1,50 @@
+
+// css variables for customization main colors
+
+$ui-color-primary: var(--ui-color-primary, #E61E4E);
+$ui-color-secondary: var(--ui-color-secondary, #53AAA5);
+$ui-color-tertiary: var(--ui-color-tertiary, #79849a);
+$ui-color-quaternary: var(--ui-color-quaternary, #323A48);
+$ui-color-success: var(--ui-color-success, #38A948);
+$ui-color-error: var(--ui-color-error, #E61E4E);
+
+$ui-color-primary-dark: var(--ui-color-primary-dark, darken(#E61E4E, 10%));
+$ui-color-primary-light: var(--ui-color-primary-light, lighten(#E61E4E, 40%));
+$ui-color-error-light: var(--ui-color-error-light, lighten(#E61E4E, 45%));
+
+
+$color-primary: #E61E4E;
+
+$color-white: #FFF;
+$color-black: #000;
+$color-pre-black: #1D222B;
+$color-font: #323A48;
+$color-darkgrey: #A9B1C0;
+$color-darkgrey-secondary: #4f5869;
+$color-grey: #E1E4EA;
+$color-lightgrey: #F2F4F7;
+$color-darkgray: #9499A5;
+$color-mediumgray: #CCCED0;
+$color-gray: #DEE1E1;
+$color-lightgray: #F7F7F8;
+$color-gray-07: #262B36;
+$color-button-grey: #E8EBED;
+$color-red-primary: #E61E4E;
+$color-red-secondary: #C4294E;
+$color-red-tertiary: #FDEBEF;
+$color-green-primary: #53AAA5;
+$color-green-secondary: #DDF4F3;
+$color-gray-01: #F2F4F7;
+$color-gray-02: #E1E4EA;
+$color-gray-03: #BDC4D1;
+$color-gray-04: #79849a;
+$color-gray-05: #4F5869;
+$color-gray-06: #323A48;
+$color-green-03: #38A948;
+$color-red-01: #E61E4E;
+
+$font-main: inherit;
+
+$transition-adaptive-duration: 0.13s;
+$transition-adaptive-timing-func: ease-in-out;
+$transition-adaptive: all $transition-adaptive-duration $transition-adaptive-timing-func;
