@@ -57,67 +57,39 @@
         <IconAlignRight />
       </button>
     </div>
+    <div
+      class="ui-text-editor__content"
+      contenteditable="true"
+      ref="contentEl"
+      :placeholder="placeholder"
+      tabindex="0"
+      @keyup="emitUpdate"
+    ></div>
 
-    <!--    <div class="tag-dropdown" v-if="showDropdown">cat misha</div>-->
-    <!--    <teleport to="body" v-if="showDropdown">-->
-    <!--      <div-->
-    <!--        class="tag-dropdown"-->
-    <!--        v-bind:style="{ top: cursorPosition.top, left: cursorPosition.left }"-->
-    <!--      >-->
-    <!--        <div-->
-    <!--          class="tag-dropdown-item"-->
-    <!--          v-for="option in optionsForTags"-->
-    <!--          @click="onChooseTag(option)"-->
-    <!--        >-->
-    <!--          {{ option }}-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </teleport>-->
-
-    <Mentionable
-      :keys="['@', '#']"
-      :items="items"
-      offset="6"
-      insert-space
-      @open="onOpen"
+    <div
+      v-if="tagRange"
+      :style="{
+        position: 'fixed',
+        left: tagsMenuPos.left + 'px',
+        top: tagsMenuPos.top + 'px',
+      }"
+      class="tags-menu"
     >
-      <!--      <textarea v-model="text" />-->
-
-      <div
-        id="editable"
-        class="ui-text-editor__content"
-        contenteditable="true"
-        ref="contentEl"
-        :placeholder="placeholder"
-        tabindex="0"
-        @keyup="emitUpdate"
-      ></div>
-
-      <template #no-result>
-        <div class="dim">No result</div>
-      </template>
-
-      <template #item-@="{ item }">
-        <div class="user">
-          {{ item.value }}
-          <span class="dim"> ({{ item.firstName }}) </span>
-        </div>
-      </template>
-
-      <template #item-#="{ item }">
-        <div class="issue">
-          <span class="number"> #{{ item.value }} </span>
-          <span class="dim">
-            {{ item.label }}
-          </span>
-        </div>
-      </template>
-    </Mentionable>
+      <ul>
+        <li
+          v-for="(tag, index) in tags"
+          :key="`tag-${index}`"
+          @click="addTag(tag)"
+        >
+          {{ tag }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
+import { reactive, ref, watchEffect } from "vue";
 
 import { Mentionable } from "vue-mention";
 
@@ -147,47 +119,53 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
 }>();
 
-const users = [
-  {
-    value: "akryum",
-    firstName: "Guillaume",
-  },
-  {
-    value: "posva",
-    firstName: "Eduardo",
-  },
-  {
-    value: "atinux",
-    firstName: "Sébastien",
-  },
-];
+const tagsMenuPos = reactive({
+  top: null,
+  left: null,
+});
+const tagRange = ref(null);
 
-const issues = [
-  {
-    value: 123,
-    label: "Error with foo bar",
-    searchText: "foo bar",
-  },
-  {
-    value: 42,
-    label: "Cannot read line",
-    searchText: "foo bar line",
-  },
-  {
-    value: 77,
-    label: "I have a feature suggestion",
-    searchText: "feature",
-  },
-];
+const emitUpdate = (e) => {
+  if (e?.key === "@") {
+    const selection = window.getSelection();
+    tagRange.value = selection.getRangeAt(0);
+    console.log("tagRange.value", tagRange.value);
+    const rect = tagRange.value.getClientRects()[0];
+
+    tagsMenuPos.left = rect.left;
+    tagsMenuPos.top = rect.top;
+  }
+
+  if (e?.key !== "@") {
+    emit("update:modelValue", contentEl.value?.innerHTML || "");
+  }
+};
+
+const addTag = (tag: string) => {
+  if (tagRange.value) {
+    const endOffset = tagRange.value.endOffset;
+
+    tagRange.value.endContainer.data =
+      tagRange.value.endContainer.data.slice(0, tagRange.value.endOffset) +
+      tag +
+      tagRange.value.endContainer.data.slice(tagRange.value.endOffset + 1);
+
+    const selection = window.getSelection();
+
+    tagRange.value.setStart(
+      tagRange.value.startContainer,
+      endOffset + tag.length
+    );
+    tagRange.value.collapse(true);
+
+    selection.removeAllRanges();
+    selection.addRange(tagRange.value);
+
+    tagRange.value = null;
+  }
+};
 
 const contentEl: Ref<HTMLElement | null> = ref(null);
-const showDropdown = ref<boolean>(false);
-const isDropdownInTyping = ref<boolean>(false);
-const cursorPositionForInsertTag = ref<number>(0);
-const cursorPosition = ref({
-  left: "0px",
-  top: "0px",
-});
 
 watchEffect(() => {
   if (contentEl.value && contentEl.value.innerHTML !== props.modelValue) {
@@ -195,31 +173,24 @@ watchEffect(() => {
   }
 });
 
-const emitUpdate = (event) => {
-  emit("update:modelValue", contentEl.value?.innerHTML || "");
-};
-
 const modify = (commandName: string): void => {
   document.execCommand(commandName);
 
   emitUpdate();
 };
 
-const onChooseTag = (tagText: string) => {
-  showDropdown.value = false;
-  isDropdownInTyping.value = false;
-};
-
-const text = ref("");
-const items = ref([]);
-
-const onOpen = (key) => {
-  items.value = key === "@" ? users : issues;
-};
+const tags = ["user", "cat"];
 </script>
 
 <style lang="scss">
 @import "./_variables.scss";
+
+.tags-menu {
+  background: #fff;
+  border: solid 2px #ff0000;
+  position: fixed;
+  z-index: 5;
+}
 
 .tag-dropdown {
   position: absolute;
