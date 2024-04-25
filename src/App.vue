@@ -29,5 +29,10 @@ const routes = [
     value: RouteNames.GIFT_LIST,
     label: "Gift list with predefined data",
   },
+
+  {
+    value: RouteNames.DATE_PICKER,
+    label: "Date picker",
+  },
 ];
 </script>
