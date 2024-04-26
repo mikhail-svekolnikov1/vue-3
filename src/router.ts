@@ -3,6 +3,7 @@ import About from "./views/About.vue";
 import Editor2 from "./views/Editor2.vue";
 import GiftList from "./views/GiftList.vue";
 import CustomDatePicker from "./views/CustomDatePicker.vue";
+import InputCurrency from "./views/InputCurrency.vue";
 import { RouteNames } from "./consts.ts";
 
 export const routes = [
@@ -13,4 +14,5 @@ export const routes = [
   { path: "/editor", component: Editor2 },
   { path: RouteNames.GIFT_LIST, component: GiftList },
   { path: RouteNames.DATE_PICKER, component: CustomDatePicker },
+  { path: RouteNames.INPUT_CURRENCY, component: InputCurrency },
 ];

@@ -34,5 +34,10 @@ const routes = [
     value: RouteNames.DATE_PICKER,
     label: "Date picker",
   },
+
+  {
+    value: RouteNames.INPUT_CURRENCY,
+    label: "Input currency",
+  },
 ];
 </script>
