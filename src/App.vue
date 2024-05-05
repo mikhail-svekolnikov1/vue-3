@@ -6,7 +6,16 @@
       >
     </div>
 
-    <div>Content below:</div>
+    <div v-if="isEdit">
+      <input
+        autofocus
+        ref="root"
+        v-model="vmodel"
+        @focus="$event.target?.select()"
+      />
+      <button @click="isEdit = false">save</button>
+    </div>
+    <div v-else @click="clickHand">{{ vmodel }}</div>
     <router-view></router-view>
     <!--    <TodoListWrapperView />-->
   </div>
@@ -15,6 +24,22 @@
 <script setup lang="ts">
 import TodoListWrapperView from "./views/TodoListWrapperView.vue";
 import { RouteNames } from "./consts.ts";
+import { ref, watchEffect } from "vue";
+
+const isEdit = ref<boolean>(false);
+const vmodel = ref<string>("content below: ");
+
+const root = ref<HTMLDivElement | null>(null);
+
+const clickHand = () => {
+  isEdit.value = true;
+};
+
+watchEffect(() => {
+  if (root.value) {
+    root.value.focus();
+  }
+});
 
 const routes = [
   {
