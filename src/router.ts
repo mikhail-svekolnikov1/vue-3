@@ -4,6 +4,9 @@ import Editor2 from "./views/Editor2.vue";
 import GiftList from "./views/GiftList.vue";
 import CustomDatePicker from "./views/CustomDatePicker.vue";
 import InputCurrency from "./views/InputCurrency.vue";
+import SendGiftPage from "./views/SendGifts/SendGiftPage.vue";
+import LayoutSendGiftPage from "./views/SendGifts/LayoutSendGiftPage.vue";
+import PreviewStep from "./views/SendGifts/PreviewStep.vue";
 import { RouteNames } from "./consts.ts";
 
 export const routes = [
@@ -15,4 +18,21 @@ export const routes = [
   { path: RouteNames.GIFT_LIST, component: GiftList },
   { path: RouteNames.DATE_PICKER, component: CustomDatePicker },
   { path: RouteNames.INPUT_CURRENCY, component: InputCurrency },
+
+  {
+    path: RouteNames.SEND_GIFTS,
+    component: SendGiftPage,
+  },
+
+  {
+    path: RouteNames.SEND_GIFTS_FORM,
+    component: LayoutSendGiftPage,
+    children: [
+      {
+        path: RouteNames.STEP_1,
+        name: RouteNames.STEP_1,
+        component: PreviewStep,
+      },
+    ],
+  },
 ];

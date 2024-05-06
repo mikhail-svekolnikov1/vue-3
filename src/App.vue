@@ -64,5 +64,10 @@ const routes = [
     value: RouteNames.INPUT_CURRENCY,
     label: "Input currency",
   },
+
+  {
+    value: RouteNames.SEND_GIFTS,
+    label: "Layout TEST",
+  },
 ];
 </script>
