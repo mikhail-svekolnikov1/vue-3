@@ -1,21 +1,21 @@
 <template>
   <div class="">
-    <div class="inline-flex flex-col mb-10">
-      <router-link v-for="(route, index) in routes" :to="route.value">
-        {{ `${index}. ${route.label}` }}</router-link
-      >
-    </div>
+    <!--    <div class="inline-flex flex-col mb-10">-->
+    <!--      <router-link v-for="(route, index) in routes" :to="route.value">-->
+    <!--        {{ `${index}. ${route.label}` }}</router-link-->
+    <!--      >-->
+    <!--    </div>-->
 
-    <div v-if="isEdit">
-      <input
-        autofocus
-        ref="root"
-        v-model="vmodel"
-        @focus="$event.target?.select()"
-      />
-      <button @click="isEdit = false">save</button>
-    </div>
-    <div v-else @click="clickHand">{{ vmodel }}</div>
+    <!--    <div v-if="isEdit">-->
+    <!--      <input-->
+    <!--        autofocus-->
+    <!--        ref="root"-->
+    <!--        v-model="vmodel"-->
+    <!--        @focus="$event.target?.select()"-->
+    <!--      />-->
+    <!--      <button @click="isEdit = false">save</button>-->
+    <!--    </div>-->
+    <!--    <div v-else @click="clickHand">{{ vmodel }}</div>-->
     <router-view></router-view>
     <!--    <TodoListWrapperView />-->
   </div>

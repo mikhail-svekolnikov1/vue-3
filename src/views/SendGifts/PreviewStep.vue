@@ -1,5 +1,5 @@
 <template>
-  <div>Preview</div>
+  <div>Preview STEP 1</div>
 </template>
 
 <script setup lang="ts"></script>
