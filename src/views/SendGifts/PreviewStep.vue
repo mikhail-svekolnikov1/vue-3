@@ -1,7 +1,14 @@
 <template>
-  <div>Preview STEP 1</div>
+  <div>
+    <h1>Preview STEP 1</h1>
+    <div>
+      <UiButton>Click</UiButton>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import UiButton from "../../components/shared/UiButton.vue";
+</script>
 
 <style scoped></style>
