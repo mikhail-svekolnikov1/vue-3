@@ -1,7 +1,13 @@
 <template>
-  <!--  <div class="max-w-[1140px] h bg-emerald-600 f">-->
-  <!--    <div class="w-full bg-amber-300 p-20">Inside div</div>-->
-  <!--  </div>-->
+  <div class="p-10 my-10 bg-emerald-600 rounded-xl">
+    <div
+      class="bg-amber-300 inline-block p-5 rounded-2xl cursor-pointer hover:bg-amber-400 transition"
+    >
+      <router-link :to="RouteNames.SEND_GIFTS"
+        >To {{ RouteNames.SEND_GIFTS }}</router-link
+      >
+    </div>
+  </div>
 
   <div>
     <MyInput v-model="testValue" />
@@ -12,6 +18,7 @@
 <script setup lang="ts">
 import MyInput from "../components/shared/MyInput.vue";
 import { ref } from "vue";
+import { RouteNames } from "../consts.ts";
 
 const testValue = ref("cat");
 </script>

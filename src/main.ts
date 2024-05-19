@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import "./index.css";
+import "./index.scss";
 import App from "./App.vue";
 import { createWebHistory, createRouter } from "vue-router";
 import TableCheckbox from "./views/TableCheckbox.vue";
