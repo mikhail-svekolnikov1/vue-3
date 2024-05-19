@@ -1,14 +1,20 @@
 <template>
-  <div>
+  <div class="px-10">
     <h1 class="font-bold text-xl my-10">Send gifts page</h1>
     <div class="grid grid-cols-4 gap-4 mb-10">
-      <div
+      <UiCard
         v-for="gift in gifts"
         :key="gift.id"
-        class="border border-blue-200 p-5"
-      >
-        {{ gift.title }}
-      </div>
+        :title="gift.title"
+        :image-url="gift.imageUrl"
+      />
+    </div>
+
+    <div class="w-[300px]">
+      <UiCard
+        title="Title test"
+        image-url="https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
+      />
     </div>
 
     <button
@@ -23,28 +29,39 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { RouteNames } from "../../consts.ts";
+import UiCard from "../../components/shared/UiCard.vue";
 
 const gifts = [
   {
     id: 1,
     title: "Gift name 1",
+    imageUrl:
+      "https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg",
   },
 
   {
     id: 2,
     title: "Gift name 2",
+    imageUrl:
+      "https://www.cats.org.uk/media/9682/ginger-kitten-min-1.png?width=300&v=1d9e57b21bec9b0&format=webp",
   },
   {
     id: 3,
     title: "Gift name 3",
+    imageUrl:
+      "https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg",
   },
   {
     id: 4,
     title: "Gift name 4",
+    imageUrl:
+      "https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg",
   },
   {
     id: 5,
     title: "Gift name 5",
+    imageUrl:
+      "https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg",
   },
 ];
 
