@@ -22,8 +22,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped lang="scss">
 .btn {
+  &--size-small {
+    padding: 10px 20px;
+  }
+
   &--size-medium {
-    padding: 20px;
+    padding: 20px 40px;
+  }
+
+  &--size-big {
+    padding: 30px 60px;
   }
 }
 </style>
