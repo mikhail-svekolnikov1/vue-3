@@ -7,14 +7,15 @@
         :key="gift.id"
         :title="gift.title"
         :image-url="gift.imageUrl"
-      />
-    </div>
-
-    <div class="w-[300px]">
-      <UiCard
-        title="Title test"
-        image-url="https://www.cats.org.uk/uploads/images/featurebox_sidebar_kids/grief-and-loss.jpg"
-      />
+      >
+        <template #footer>
+          <div class="flex justify-between">
+            <div class="cursor-pointer">view</div>
+            <div class="cursor-pointer">edit</div>
+            <div class="cursor-pointer">delete</div>
+          </div>
+        </template>
+      </UiCard>
     </div>
 
     <button

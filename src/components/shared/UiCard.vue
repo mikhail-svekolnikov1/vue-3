@@ -1,19 +1,34 @@
 <template>
-  <div class="ui-card p-2 rounded-2xl transition">
-    <img class="image rounded-2xl mb-2" :src="imageUrl" :alt="title" />
+  <div
+    class="ui-card p-2 rounded-2xl transition"
+    @mouseover="isCardHovered = true"
+    @mouseleave="isCardHovered = false"
+  >
+    <img
+      class="image rounded-2xl mb-2 cursor-pointer"
+      :src="imageUrl"
+      :alt="title"
+    />
 
     <div class="font-bold">{{ title }}</div>
-    <!--    <slots></slots>-->
+    <div v-if="isCardHovered">
+      <slot name="footer"></slot>
+    </div>
+    <div v-else-if="$slots.footer && !isCardHovered" class="min-h-[24px]"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
 interface Props {
   imageUrl: string;
   title: string;
 }
 
 defineProps<Props>();
+
+const isCardHovered = ref(false);
 </script>
 
 <style scoped lang="scss">
