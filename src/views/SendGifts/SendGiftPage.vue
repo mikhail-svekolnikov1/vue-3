@@ -18,6 +18,8 @@
       </UiCard>
     </div>
 
+    <UiSelect @change="onChangeSelect" />
+
     <button
       @click="redirectToForm"
       class="border border-blue-200 p-5 rounded-2xl"
@@ -31,6 +33,7 @@
 import { useRouter } from "vue-router";
 import { RouteNames } from "../../consts.ts";
 import UiCard from "../../components/shared/UiCard.vue";
+import UiSelect from "../../components/shared/UiSelect.vue";
 
 const gifts = [
   {
@@ -72,6 +75,10 @@ const redirectToForm = () => {
   router.push({
     name: RouteNames.STEP_1,
   });
+};
+
+const onChangeSelect = (event) => {
+  console.log("event", event.target.value);
 };
 </script>
 
