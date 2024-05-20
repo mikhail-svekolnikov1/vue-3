@@ -2,7 +2,9 @@
   <div class="layout flex flex-col min-h-screen">
     <div class="flex justify-between px-10 border border-b-black py-5">
       <div>Logo</div>
-      <div class="cursor-pointer">Close</div>
+      <div class="cursor-pointer" @click="router.push(RouteNames.SEND_GIFTS)">
+        Close
+      </div>
     </div>
     <div class="p-10">
       <router-view />
@@ -19,6 +21,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+import { RouteNames } from "../../consts.ts";
+
+const router = useRouter();
+</script>
 
 <style scoped></style>
