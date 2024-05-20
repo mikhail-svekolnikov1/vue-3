@@ -1,12 +1,11 @@
 <template>
-  <div
+  <button
     class="inline-block border border-blue-200 p-2 px-6 rounded-2xl cursor-pointer hover:bg-blue-800 hover:text-white active:bg-blue-950 transition ease-in-out duration-300"
     :class="`btn btn--size-${size}`"
+    v-bind="$attrs"
   >
-    <button>
-      <slot />
-    </button>
-  </div>
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -32,6 +31,14 @@ const props = withDefaults(defineProps<Props>(), {
 
   &--size-big {
     padding: 30px 60px;
+  }
+
+  &:disabled {
+    background-color: #eeeeee;
+
+    &:hover {
+      color: inherit;
+    }
   }
 }
 </style>

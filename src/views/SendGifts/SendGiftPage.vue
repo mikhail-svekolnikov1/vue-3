@@ -18,14 +18,7 @@
       </UiCard>
     </div>
 
-    <UiSelect @change="onChangeSelect" />
-
-    <button
-      @click="redirectToForm"
-      class="border border-blue-200 p-5 rounded-2xl"
-    >
-      Redirect to form
-    </button>
+    <UiButton @click="redirectToForm"> Redirect to form </UiButton>
   </div>
 </template>
 
@@ -33,7 +26,7 @@
 import { useRouter } from "vue-router";
 import { RouteNames } from "../../consts.ts";
 import UiCard from "../../components/shared/UiCard.vue";
-import UiSelect from "../../components/shared/UiSelect.vue";
+import UiButton from "../../components/shared/UiButton.vue";
 
 const gifts = [
   {
