@@ -18,12 +18,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends { id: number }">
 import { ref } from "vue";
 
 interface Props {
   imageUrl: string;
   title: string;
+  item: T;
 }
 
 defineProps<Props>();

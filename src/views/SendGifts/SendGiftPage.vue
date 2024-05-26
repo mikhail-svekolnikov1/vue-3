@@ -8,6 +8,7 @@
       <UiCard
         v-for="gift in gifts"
         :key="gift.id"
+        :item="gift"
         :title="gift.title"
         :image-url="gift.imageUrl"
       >
@@ -31,7 +32,13 @@ import { RouteNames } from "../../consts.ts";
 import UiCard from "../../components/shared/UiCard.vue";
 import UiButton from "../../components/shared/UiButton.vue";
 
-const gifts = [
+interface Gifts {
+  id: number;
+  title: string;
+  imageUrl: string;
+}
+
+const gifts: Gifts[] = [
   {
     id: 1,
     title: "Gift name 1",
