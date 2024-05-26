@@ -6,6 +6,15 @@
         Close
       </div>
     </div>
+    <div class="m-auto mt-0">
+      <div class="mt-10">
+        <UiStepper
+          :activeStep="activeStep"
+          :steps="steps"
+          @changeActiveStep="onChangeActiveStep"
+        />
+      </div>
+    </div>
     <div class="p-10">
       <router-view />
     </div>
@@ -24,8 +33,18 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { RouteNames } from "../../consts.ts";
+import UiStepper from "../../components/shared/UiStepper.vue";
+import { ref } from "vue";
 
 const router = useRouter();
+
+const activeStep = ref(1);
+
+const onChangeActiveStep = (step: number) => {
+  activeStep.value = step;
+};
+
+const steps = ["Gift type", "Gift amount", "Gift collections", "Gift design"];
 </script>
 
 <style scoped></style>
