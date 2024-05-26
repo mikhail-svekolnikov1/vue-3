@@ -15,7 +15,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   type: "primary",
-  size: "medium",
+  size: "small",
 });
 </script>
 

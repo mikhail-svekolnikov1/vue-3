@@ -1,6 +1,9 @@
 <template>
   <div class="px-10">
-    <h1 class="font-bold text-xl my-10">Send gifts page</h1>
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-xl my-10">Send gifts page</h1>
+      <UiButton @click="redirectToForm">Send a new gift</UiButton>
+    </div>
     <div class="grid grid-cols-4 gap-4 mb-10">
       <UiCard
         v-for="gift in gifts"

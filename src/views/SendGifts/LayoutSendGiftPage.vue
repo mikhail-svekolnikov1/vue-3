@@ -6,7 +6,7 @@
         Close
       </div>
     </div>
-    <div class="m-auto mt-0">
+    <div class="m-auto my-0">
       <div class="mt-10">
         <UiStepper
           :activeStep="activeStep"
@@ -22,10 +22,8 @@
     <div
       class="layout-footer flex items-center justify-center mt-auto px-10 mb-5"
     >
-      <button class="border border-blue-200 p-5 px-10 rounded-2xl mr-10">
-        Back
-      </button>
-      <button class="border border-blue-200 p-5 px-10 rounded-2xl">Next</button>
+      <UiButton class="mr-10"> Back </UiButton>
+      <UiButton>Next</UiButton>
     </div>
   </div>
 </template>
@@ -35,6 +33,7 @@ import { useRouter } from "vue-router";
 import { RouteNames } from "../../consts.ts";
 import UiStepper from "../../components/shared/UiStepper.vue";
 import { ref } from "vue";
+import UiButton from "../../components/shared/UiButton.vue";
 
 const router = useRouter();
 
