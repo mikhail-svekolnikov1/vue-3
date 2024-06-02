@@ -7,7 +7,9 @@
       class="p-2 inline-flex flex-0 bg-amber-100 rounded-2xl"
     >
       {{ tip }}
-      <span class="ml-2">X</span>
+      <span class="ml-2 cursor-pointer" @click="onDeleteChip(tip)">
+        <i class="pi pi-times-circle" />
+      </span>
     </div>
     <input
       v-model="inputValue"
@@ -28,6 +30,10 @@ const tips = ref<string[]>(["John Smith", "Smith"]);
 const onAddTip = () => {
   tips.value.push(inputValue.value);
   inputValue.value = "";
+};
+
+const onDeleteChip = (clickedTip: string) => {
+  tips.value = tips.value.filter((tip) => tip !== clickedTip);
 };
 </script>
 

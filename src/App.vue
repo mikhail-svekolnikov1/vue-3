@@ -26,6 +26,8 @@ import TodoListWrapperView from "./views/TodoListWrapperView.vue";
 import { RouteNames } from "./consts.ts";
 import { ref, watchEffect } from "vue";
 
+import "primeicons/primeicons.css";
+
 const isEdit = ref<boolean>(false);
 const vmodel = ref<string>("content below: ");
 
