@@ -20,8 +20,7 @@
   </div>
 
   <div>
-    <MyInput v-model="testValue" />
-    <div>{{ testValue }}</div>
+    <MultiInput />
   </div>
 </template>
 
@@ -29,6 +28,7 @@
 import MyInput from "../components/shared/MyInput.vue";
 import { ref } from "vue";
 import { RouteNames } from "../consts.ts";
+import MultiInput from "../components/shared/MultiInput.vue";
 
 const testValue = ref("cat");
 </script>
