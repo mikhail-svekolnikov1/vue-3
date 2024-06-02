@@ -8,7 +8,7 @@
           >To {{ RouteNames.SEND_GIFTS }}</router-link
         >
       </div>
-
+      <div class="text-primary">Test</div>
       <div
         class="bg-amber-300 inline-block p-5 rounded-2xl cursor-pointer hover:bg-amber-400 transition"
       >
