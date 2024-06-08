@@ -23,16 +23,30 @@
     <MultiInput />
   </div>
   <div class="mt-10">
-    <UiTable :columns="columns" :data-source="dataSource" />
+    <EmptyUiTable
+      v-if="loadingTable"
+      :columns="columns"
+      :dataSource="dataSource"
+    />
+    <UiTable v-else :columns="columns" :dataSource="dataSource" />
   </div>
 </template>
 
 <script setup lang="ts">
 import MyInput from "../components/shared/MyInput.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { RouteNames } from "../consts.ts";
 import MultiInput from "../components/shared/MultiInput.vue";
-import UiTable from "../components/shared/UiTable.vue";
+import UiTable from "../components/shared/UiTable/UiTable.vue";
+import EmptyUiTable from "../components/shared/UiTable/EmptyUiTable.vue";
+
+const loadingTable = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    loadingTable.value = false;
+  }, 2000);
+});
 
 const testValue = ref("cat");
 
@@ -94,6 +108,24 @@ const dataSource = [
     value: "$150",
     timedGifts: "8",
     dateScheduled: "2024-06-10",
+  },
+  {
+    id: 4,
+    recipient: "Emily Davis",
+    email: "emily.davis@example.com",
+    campaignGift: "Gift D",
+    value: "$120",
+    timedGifts: "6",
+    dateScheduled: "2024-06-15",
+  },
+  {
+    id: 5,
+    recipient: "James Brown",
+    email: "james.brown@example.com",
+    campaignGift: "Campaign E",
+    value: "$180",
+    timedGifts: "12",
+    dateScheduled: "2024-06-20",
   },
 ];
 </script>
