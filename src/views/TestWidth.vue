@@ -38,39 +38,58 @@ const testValue = ref("cat");
 
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
+    title: "Recipient",
+    dataIndex: "recipient",
   },
-
   {
-    title: "Age",
-    dataIndex: "age",
+    title: "Email",
+    dataIndex: "email",
   },
-
   {
-    title: "City",
-    dataIndex: "city",
+    title: "Campaign/Gift",
+    dataIndex: "campaignGift",
+  },
+  {
+    title: "Value",
+    dataIndex: "value",
+  },
+  {
+    title: "Timed Gifts",
+    dataIndex: "timedGifts",
+  },
+  {
+    title: "Date Scheduled",
+    dataIndex: "dateScheduled",
   },
 ];
 
 const dataSource = [
   {
     id: 1,
-    name: "Misha",
-    age: "27",
-    city: "Kharkov",
+    recipient: "John Doe",
+    email: "john.doe@example.com",
+    campaignGift: "Campaign A",
+    value: "$100",
+    timedGifts: "5",
+    dateScheduled: "2024-06-01",
   },
   {
     id: 2,
-    name: "Misha",
-    age: "27",
-    city: "Kharkov",
+    recipient: "Jane Smith",
+    email: "jane.smith@example.com",
+    campaignGift: "Gift B",
+    value: "$200",
+    timedGifts: "10",
+    dateScheduled: "2024-06-05",
   },
   {
     id: 3,
-    name: "Misha",
-    age: "27",
-    city: "Kharkov",
+    recipient: "Mike Johnson",
+    email: "mike.johnson@example.com",
+    campaignGift: "Campaign C",
+    value: "$150",
+    timedGifts: "8",
+    dateScheduled: "2024-06-10",
   },
 ];
 </script>

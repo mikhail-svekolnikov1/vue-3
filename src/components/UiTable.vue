@@ -8,11 +8,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="loading">
-        <td class="skeleton"></td>
-        <td class="skeleton"></td>
-        <td class="skeleton"></td>
-      </tr>
+      <template v-if="loading">
+        <tr v-for="n in 5" :key="'skeleton-' + n">
+          <td v-for="column in columns" :key="column.title">
+            <div class="skeleton"></div>
+          </td>
+        </tr>
+      </template>
       <tr v-else v-for="(item, index) in dataSource" :key="item.id">
         <td>{{ item[columns[index].dataIndex] }}</td>
       </tr>
@@ -99,7 +101,10 @@ table tr:last-child td:last-child {
 /* Skeleton loading styles */
 .skeleton {
   background-color: #ddd;
-  height: 20px;
+  height: 14px;
+  width: 80%; /* Ширина полоски */
+  margin: 6px auto; /* Отступы сверху и снизу */
+  border-radius: 4px; /* Радиус */
   position: relative;
   overflow: hidden;
 }
