@@ -32,7 +32,7 @@ import MyInput from "../components/shared/MyInput.vue";
 import { ref } from "vue";
 import { RouteNames } from "../consts.ts";
 import MultiInput from "../components/shared/MultiInput.vue";
-import UiTable from "../components/UiTable.vue";
+import UiTable from "../components/shared/UiTable.vue";
 
 const testValue = ref("cat");
 
@@ -40,10 +40,14 @@ const columns = [
   {
     title: "Recipient",
     dataIndex: "recipient",
+    randomWidth: true,
+    width: "300px",
   },
   {
     title: "Email",
     dataIndex: "email",
+    randomWidth: true,
+    width: "300px",
   },
   {
     title: "Campaign/Gift",

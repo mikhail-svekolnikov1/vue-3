@@ -2,7 +2,11 @@
   <table class="styled-table">
     <thead>
       <tr>
-        <th v-for="column in columns" :key="column.title">
+        <th
+          :class="`w-[${column?.width || 'auto'}]`"
+          v-for="column in columns"
+          :key="column.title"
+        >
           {{ column.title }}
         </th>
       </tr>
@@ -11,7 +15,14 @@
       <template v-if="loading">
         <tr v-for="n in 5" :key="'skeleton-' + n">
           <td v-for="column in columns" :key="column.title">
-            <div class="skeleton"></div>
+            <div
+              class="skeleton"
+              :style="
+                column.randomWidth
+                  ? { width: getRandomWidthPercentage() }
+                  : null
+              "
+            />
           </td>
         </tr>
       </template>
@@ -32,6 +43,8 @@ import { onMounted, ref } from "vue";
 export interface Columns {
   title: string;
   dataIndex: string;
+  width?: string;
+  randomWidth?: boolean;
 }
 
 export interface DataSource {
@@ -46,6 +59,15 @@ interface Props {
 defineProps<Props>();
 
 const loading = ref(true);
+
+const getRandomWidthPercentage = () => {
+  const min = 30;
+  const max = 100;
+
+  const result = Math.floor(Math.random() * (max - min + 1)) + min + "%";
+
+  return result;
+};
 
 onMounted(() => {
   setTimeout(() => {
