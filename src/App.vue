@@ -5,13 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from "vue";
+import { onMounted } from "vue";
 
 import "primeicons/primeicons.css";
 
 onMounted(async () => {
   const result = await import(`./themes/${import.meta.env.VITE_THEME}.ts`);
-  console.log(result.colors);
 
   const root = document.documentElement;
 

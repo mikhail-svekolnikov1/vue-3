@@ -22,6 +22,9 @@
   <div>
     <MultiInput />
   </div>
+  <div class="mt-10">
+    <UiTable :columns="columns" :data-source="dataSource" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -29,8 +32,47 @@ import MyInput from "../components/shared/MyInput.vue";
 import { ref } from "vue";
 import { RouteNames } from "../consts.ts";
 import MultiInput from "../components/shared/MultiInput.vue";
+import UiTable from "../components/UiTable.vue";
 
 const testValue = ref("cat");
+
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+  },
+
+  {
+    title: "Age",
+    dataIndex: "age",
+  },
+
+  {
+    title: "City",
+    dataIndex: "city",
+  },
+];
+
+const dataSource = [
+  {
+    id: 1,
+    name: "Misha",
+    age: "27",
+    city: "Kharkov",
+  },
+  {
+    id: 2,
+    name: "Misha",
+    age: "27",
+    city: "Kharkov",
+  },
+  {
+    id: 3,
+    name: "Misha",
+    age: "27",
+    city: "Kharkov",
+  },
+];
 </script>
 
 <style scoped></style>
