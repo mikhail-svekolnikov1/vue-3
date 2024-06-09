@@ -23,37 +23,48 @@
     <MultiInput />
   </div>
   <div class="mt-10">
-    <!--    <EmptyUiTable-->
-    <!--      v-if="loadingTable"-->
+    <input
+      contenteditable="true"
+      ref="input"
+      class="m-10 p-3 border border-primary"
+      type="text"
+      placeholder="tags type @"
+      @keydown="onKeyDown"
+      @input="onInput"
+    />
+
+    <div v-if="showDropdown" :style="dropdownStyle" class="dropdown">
+      <!-- Содержимое дропдауна -->
+      <p>Dropdown Content</p>
+      <UiButton @click="handleButtonClick">Add cat</UiButton>
+    </div>
+
+    <!--    <UiTable-->
+    <!--      v-if="dataSource.length"-->
     <!--      :columns="columns"-->
     <!--      :dataSource="dataSource"-->
     <!--    />-->
-    <UiTable
-      v-if="dataSource.length"
-      :columns="columns"
-      :dataSource="dataSource"
-    />
-    <UiTable v-else :columns="columns" :dataSource="emptyDataSource">
-      <template #recipient>
-        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />
-      </template>
+    <!--    <UiTable v-else :columns="columns" :dataSource="emptyDataSource">-->
+    <!--      <template #recipient>-->
+    <!--        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />-->
+    <!--      </template>-->
 
-      <template #email>
-        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />
-      </template>
-      <template #campaignGift>
-        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />
-      </template>
-      <template #value>
-        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />
-      </template>
-      <template #timedGifts>
-        <div class="skeleton" />
-      </template>
-      <template #dateScheduled>
-        <div class="skeleton" />
-      </template>
-    </UiTable>
+    <!--      <template #email>-->
+    <!--        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />-->
+    <!--      </template>-->
+    <!--      <template #campaignGift>-->
+    <!--        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />-->
+    <!--      </template>-->
+    <!--      <template #value>-->
+    <!--        <div class="skeleton" :style="{ width: getRandomWidthPercentage() }" />-->
+    <!--      </template>-->
+    <!--      <template #timedGifts>-->
+    <!--        <div class="skeleton" />-->
+    <!--      </template>-->
+    <!--      <template #dateScheduled>-->
+    <!--        <div class="skeleton" />-->
+    <!--      </template>-->
+    <!--    </UiTable>-->
   </div>
 </template>
 
@@ -63,8 +74,63 @@ import { onMounted, ref } from "vue";
 import { RouteNames } from "../consts.ts";
 import MultiInput from "../components/shared/MultiInput.vue";
 import UiTable from "../components/shared/UiTable/UiTable.vue";
+import UiButton from "../components/shared/UiButton.vue";
 
 const loadingTable = ref(true);
+
+const input = ref<HTMLInputElement>(null);
+const showDropdown = ref(false);
+const dropdownStyle = ref({});
+
+const onInput = (event: Event) => {
+  // console.log(event.target.value);
+  // if(event.target.value) {
+  // }
+};
+
+const handleButtonClick = () => {
+  const inputValue = input.value.value;
+  const insertToken = "cat";
+
+  const insertTokenAt = input.value.selectionEnd;
+  // After we insert the text, we're going to want to re-focus the input.
+  // However, we're going to want to advance the selection such that it starts
+  // just after the inserted text.
+  const nextSelectionEnd = insertTokenAt + 1 + insertToken.length;
+
+  // Insert the text at the given location within the input.
+  input.value.value =
+    inputValue.slice(0, insertTokenAt) +
+    insertToken +
+    " " +
+    inputValue.slice(insertTokenAt);
+
+  // Advance the text selection to just after the inserted text.
+  input.value.selectionStart = nextSelectionEnd;
+  input.value.selectionEnd = nextSelectionEnd;
+
+  input.value.focus();
+};
+
+const onKeyDown = (event: KeyboardEvent) => {
+  const target = event.target as HTMLInputElement;
+
+  // Проверить символ перед текущей позицией курсора
+  if (event.key === "@") {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const rect = range.getClientRects()[0];
+    console.log("range", range);
+    console.log("rect", rect);
+
+    // tagsMenuPos.left = rect.left;
+    // tagsMenuPos.top = rect.top;
+
+    showDropdown.value = true;
+  } else {
+    showDropdown.value = false;
+  }
+};
 
 const getRandomWidthPercentage = () => {
   const min = 60;
