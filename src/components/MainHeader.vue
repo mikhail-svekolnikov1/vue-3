@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 my-10 mt-0 bg-emerald-600 rounded-xl">
+  <div class="p-5 my-10 mt-0 bg-emerald-600">
     <div>
       <div
         class="bg-amber-300 inline-block p-5 rounded-2xl cursor-pointer hover:bg-amber-400 transition mr-10"
