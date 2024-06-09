@@ -9,11 +9,13 @@ import MentionText from "./views/MentionText/MentionText.vue";
 import LayoutSendGiftPage from "./views/SendGifts/LayoutSendGiftPage.vue";
 import PreviewStep from "./views/SendGifts/PreviewStep.vue";
 import { RouteNames } from "./consts.ts";
+import FirstScreen from "./FirstScreen.vue";
 
 export const routes = [
   // { path: "/", component: TableCheckbox },
   // { path: "/", component: SortYourGifts },
-  { path: "/", component: TestWidth },
+  // { path: "/", component: TestWidth },
+  { path: "/", component: FirstScreen },
   { path: "/about", component: About },
   { path: "/editor", component: Editor2 },
   { path: RouteNames.GIFT_LIST, component: GiftList },
