@@ -3,6 +3,7 @@ export interface Columns {
   dataIndex: string;
   width?: string;
   randomWidth?: boolean;
+  slotName?: string;
 }
 
 export interface DataSource {

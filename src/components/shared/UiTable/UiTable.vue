@@ -4,7 +4,12 @@
     <tbody>
       <tr v-for="item in dataSource" :key="item.id">
         <td v-for="(column, index) in columns" :key="column.title">
-          {{ item[columns[index].dataIndex] }}
+          <slot
+            v-if="column.slotName && $slots[column.slotName]"
+            :name="column.slotName"
+            :data="item[columns[index].dataIndex]"
+          />
+          <div v-else>{{ item[columns[index].dataIndex] }}</div>
         </td>
       </tr>
     </tbody>
@@ -26,11 +31,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-onMounted(() => {
-  console.log(props.dataSource);
-  console.log(props.columns);
-});
 </script>
 
 <style lang="scss">

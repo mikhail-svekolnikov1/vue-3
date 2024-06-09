@@ -3,6 +3,7 @@
     <tr>
       <th
         :class="`w-[${column?.width || 'auto'}]`"
+        :style="column.randomWidth ? { width: column?.width } : null"
         v-for="column in columns"
         :key="column.title"
       >
