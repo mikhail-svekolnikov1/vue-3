@@ -9,6 +9,7 @@
       <UiButton @click="onSetData">Set data</UiButton>
       <UiButton @click="onApplyFilter">Apply filter</UiButton>
     </div>
+
     <div v-if="loading" class="flex justify-center items-center">
       <div class="loader" />
     </div>
