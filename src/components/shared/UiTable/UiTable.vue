@@ -3,13 +3,13 @@
     <TableHead :columns="columns" />
     <tbody>
       <tr v-for="item in dataSource" :key="item.id">
-        <td v-for="(column, index) in columns" :key="column.title">
+        <td v-for="column in columns" :key="column.title">
           <slot
             v-if="column.slotName && $slots[column.slotName]"
             :name="column.slotName"
-            :data="item[columns[index].dataIndex]"
+            :data="item[column.dataIndex]"
           />
-          <div v-else>{{ item[columns[index].dataIndex] }}</div>
+          <div v-else>{{ item[column.dataIndex] }}</div>
         </td>
       </tr>
     </tbody>
