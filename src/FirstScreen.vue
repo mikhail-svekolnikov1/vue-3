@@ -4,7 +4,8 @@
 
     <section class="p-10 pt-0">
       <!--      <TestEmptyStates />-->
-      <TestFlex />
+      <!--      <TestFlex />-->
+      <InputWithTags2 />
     </section>
   </div>
 </template>
@@ -16,6 +17,8 @@ import MainHeader from "./components/MainHeader.vue";
 import UiTable from "./components/shared/UiTable/UiTable.vue";
 import TestEmptyStates from "./views/TestEmptyStates/TestEmptyStates.vue";
 import TestFlex from "./views/TestFlex.vue";
+import InputWithTags from "./views/InputWithTags.vue";
+import InputWithTags2 from "./views/InputWithTags2.vue";
 </script>
 
 <style scoped lang="scss"></style>
