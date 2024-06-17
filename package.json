@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vueup/vue-quill": "^1.2.0",
+    "@vueuse/core": "^10.11.0",
     "prettier": "2.8.8",
     "primeicons": "^7.0.0",
     "quill-autoformat": "^0.1.2",
