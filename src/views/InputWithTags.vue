@@ -1,15 +1,22 @@
 <template>
   <div>
-    <textarea
-      contenteditable="true"
+    <input
       ref="input"
-      class="m-10 p-3 border border-primary"
+      class="m-10 mb-0 p-3 w-[300px] border border-primary"
       type="text"
       placeholder="tags type @"
       @keydown="onKeyDown"
       @input="onInput"
+      v-model="inputValue"
     />
-    <div v-if="showDropdown" :style="dropdownStyle" class="dropdown">
+    <!--    <div class="ml-10 p-3 w-[300px] border border-primary">-->
+    <!--      {{ inputValue }}-->
+    <!--    </div>-->
+    <div
+      v-if="showDropdown"
+      class="absolute dropdown border-2 border-primary p-2"
+      :style="{ left: `${coordinates.x}px` }"
+    >
       <!-- Содержимое дропдауна -->
       <p>Dropdown Content</p>
       <UiButton @click="handleButtonClick">Add cat</UiButton>
@@ -24,8 +31,13 @@ import UiButton from "../components/shared/UiButton.vue";
 const input = ref<HTMLInputElement>(null);
 const showDropdown = ref(false);
 const dropdownStyle = ref({});
-
+const inputValue = ref("");
 const onInput = (event: Event) => {};
+
+const coordinates = ref({
+  x: 0,
+  y: 0,
+});
 
 const handleButtonClick = () => {
   const inputValue = input.value.value;
@@ -136,12 +148,29 @@ const onKeyDown = (event: KeyboardEvent) => {
   if (event.key === "@") {
     const selection = window.getSelection();
     const range = selection.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-
-    console.log("rect", rect);
 
     const coords = getCaretCoordinates(input.value, input.value.selectionStart);
-    console.log("coords", coords);
+    let popUpPos = { x: 0, y: 0 };
+    if (coordinates.value.x == 0 && coordinates.value.y == 0) {
+      const input = document.activeElement;
+      const div = document.createElement("div");
+      for (let style of input.computedStyleMap()) {
+        div.style[style[0]] = style[1].toString();
+        div.textContent = input.value.substring(0, input.selectionStart);
+        const span = document.createElement("span");
+        div.insertBefore(span, null);
+        document.body.insertBefore(div, null);
+        const [divPos, spanPos, inputPos] = [div, span, input].map((e) =>
+          e.getBoundingClientRect()
+        );
+
+        coordinates.value = {
+          x: inputPos.x + (spanPos.x - divPos.x),
+          y: inputPos.y + (spanPos.y - divPos.y),
+        };
+      }
+    }
+
     showDropdown.value = true;
   } else {
     showDropdown.value = false;

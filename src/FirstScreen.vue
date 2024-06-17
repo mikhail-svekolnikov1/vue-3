@@ -5,7 +5,7 @@
     <section class="p-10 pt-0">
       <!--      <TestEmptyStates />-->
       <!--      <TestFlex />-->
-      <InputWithTags2 />
+      <InputWithTags3 />
     </section>
   </div>
 </template>
@@ -19,6 +19,7 @@ import TestEmptyStates from "./views/TestEmptyStates/TestEmptyStates.vue";
 import TestFlex from "./views/TestFlex.vue";
 import InputWithTags from "./views/InputWithTags.vue";
 import InputWithTags2 from "./views/InputWithTags2.vue";
+import InputWithTags3 from "./views/InputWithTags3.vue";
 </script>
 
 <style scoped lang="scss"></style>
