@@ -7,11 +7,12 @@
       <!--      <TestFlex />-->
       <!--      <InputWithTags3 />-->
       <UiSelect
+        with-search
         v-model="selectValue"
         :options="[
-          { key: 'key-1', value: 'key-1' },
-          { key: 'key-2', value: 'key-2' },
-          { key: 'key-3', value: 'key-3' },
+          { key: 'misha', value: 'Misha' },
+          { key: 'john', value: 'John' },
+          { key: 'susan', value: 'Susan' },
         ]"
       />
       <div>some text long text some some</div>
@@ -25,7 +26,7 @@ import MainHeader from "./components/MainHeader.vue";
 import UiSelect from "./components/shared/UiSelect.vue";
 import { ref } from "vue";
 
-const selectValue = ref("key-1");
+const selectValue = ref("");
 </script>
 
 <style scoped lang="scss"></style>
