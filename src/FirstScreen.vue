@@ -6,22 +6,25 @@
       <!--      <TestEmptyStates />-->
       <!--      <TestFlex />-->
       <!--      <InputWithTags3 />-->
-      <UiSelect
-        with-search
-        v-model="selectValue"
-        :options="[
-          { key: 'misha', value: 'Misha' },
-          { key: 'john', value: 'John' },
-          { key: 'susan', value: 'Susan' },
-        ]"
-      />
-      <div>some text long text some some</div>
+      <!--      <UiSelect-->
+      <!--        with-search-->
+      <!--        v-model="selectValue"-->
+      <!--        :options="[-->
+      <!--          { key: 'misha', value: 'Misha' },-->
+      <!--          { key: 'john', value: 'John' },-->
+      <!--          { key: 'susan', value: 'Susan' },-->
+      <!--        ]"-->
+      <!--      />-->
+      <!--      <div>some text long text some some</div>-->
+
+      <MyCarousel />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import MainHeader from "./components/MainHeader.vue";
+import MyCarousel from "./components/MyCarousel.vue";
 
 import UiSelect from "./components/shared/UiSelect.vue";
 import { ref } from "vue";
