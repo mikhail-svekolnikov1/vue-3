@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-vue": "^0.4.13",
     "@vueup/vue-quill": "^1.2.0",
     "@vueuse/core": "^10.11.0",
     "prettier": "2.8.8",
