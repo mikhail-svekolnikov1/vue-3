@@ -51,7 +51,7 @@ const aggregatedGiftsBySupplier = computed(() => {
 watch(
   selectedGifts,
   () => {
-    selectedGiftIds.value = selectedGifts.value.map((gift) => gift.id);
+    // selectedGiftIds.value = selectedGifts.value.map((gift) => gift.id);
 
     selectedGiftIds.value = selectedGifts.value.map((selectedGift) => {
       const aggregatedSupplier = aggregatedGiftsBySupplier.value.find(
