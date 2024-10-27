@@ -12,7 +12,9 @@
     <!--      </div>-->
     <!--    </div>-->
 
-    <GiftCollection />
+    <!--    <GiftCollection />-->
+
+    <RememberCode />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import { DotLottieVue } from "@lottiefiles/dotlottie-vue";
 
 import "primeicons/primeicons.css";
 import GiftCollection from "./views/GiftCollection.vue";
+import RememberCode from "./views/RememberCode.vue";
 
 const arr = [
   { src: new URL("./assets/birthday.png", import.meta.url).href },
